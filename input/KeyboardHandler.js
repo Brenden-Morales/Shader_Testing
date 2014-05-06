@@ -11,21 +11,17 @@ BJM.keyboard = function(){
     self.keys = {};
 
     var keydown = function(e){
-        console.log(e);
-        console.log(String.fromCharCode(e.keyCode).toLowerCase());
         if(this.keys[String.fromCharCode(e.keyCode).toLowerCase()] === undefined){
             this.keys[String.fromCharCode(e.keyCode).toLowerCase()] = {};
         }
-        this.keys[String.fromCharCode(e.keyCode)].down = true;
+        this.keys[String.fromCharCode(e.keyCode).toLowerCase()].down = true;
     };
 
     var keyup = function(e){
-        console.log(e);
-        console.log(String.fromCharCode(e.keyCode).toLowerCase());
         if(this.keys[String.fromCharCode(e.keyCode).toLowerCase()] === undefined){
             this.keys[String.fromCharCode(e.keyCode).toLowerCase()] = {};
         }
-        this.keys[String.fromCharCode(e.keyCode)].down = false;
+        this.keys[String.fromCharCode(e.keyCode).toLowerCase()].down = false;
     };
 
     self.get = function(char){
