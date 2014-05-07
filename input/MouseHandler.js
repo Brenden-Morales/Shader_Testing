@@ -8,15 +8,16 @@ if(BJM === undefined){
 BJM.mouse = function() {
     "use strict";
     var self = this instanceof BJM.mouse ? this : Object.create(BJM.mouse.prototype);
-    self.x = 0;
-    self.y = 0;
+    var x = 0;
+    var oldX = 0;
+    var y = 0;
+    var oldY = 0;
     var buttons = [];
 
     var mouseMove = function(e){
-        this.x = e.x;
-        this.y = e.y;
+        x = e.x;
+        y = e.y;
     };
-
     var mouseDown = function(e){
         buttons[e.button] = true;
     };
@@ -24,6 +25,17 @@ BJM.mouse = function() {
         buttons[e.button] = false;
     };
 
+    self.getMousePosition = function(){
+        oldX = x;
+        oldY = y;
+        return {"x":x, "y":y};
+    };
+
+    self.getOldMousePosition = function(){
+        return {"x":oldX,"y":oldY};
+    };
+
     document.body.onmousemove = mouseMove.bind(this);
     document.body.onmousedown = mouseDown.bind(this);
-}
+    document.body.onmouseup = mouseUp.bind(this);
+};

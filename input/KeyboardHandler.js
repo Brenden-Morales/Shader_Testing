@@ -8,25 +8,25 @@ if(BJM === undefined){
 BJM.keyboard = function(){
     "use strict";
     var self = this instanceof BJM.keyboard ? this : Object.create(BJM.keyboard.prototype);
-    self.keys = {};
+    var keys = {};
 
     var keydown = function(e){
-        if(this.keys[String.fromCharCode(e.keyCode).toLowerCase()] === undefined){
-            this.keys[String.fromCharCode(e.keyCode).toLowerCase()] = {};
+        if(keys[String.fromCharCode(e.keyCode).toLowerCase()] === undefined){
+            keys[String.fromCharCode(e.keyCode).toLowerCase()] = {};
         }
-        this.keys[String.fromCharCode(e.keyCode).toLowerCase()].down = true;
+        keys[String.fromCharCode(e.keyCode).toLowerCase()].down = true;
     };
 
     var keyup = function(e){
-        if(this.keys[String.fromCharCode(e.keyCode).toLowerCase()] === undefined){
-            this.keys[String.fromCharCode(e.keyCode).toLowerCase()] = {};
+        if(keys[String.fromCharCode(e.keyCode).toLowerCase()] === undefined){
+            keys[String.fromCharCode(e.keyCode).toLowerCase()] = {};
         }
-        this.keys[String.fromCharCode(e.keyCode).toLowerCase()].down = false;
+        keys[String.fromCharCode(e.keyCode).toLowerCase()].down = false;
     };
 
     self.get = function(char){
-        if(this.keys[char] !== undefined){
-            if(this.keys[char].down){
+        if(keys[char] !== undefined){
+            if(keys[char].down){
                 return true;
             }
         }
@@ -36,4 +36,4 @@ BJM.keyboard = function(){
     window.onkeydown = keydown.bind(this);
     window.onkeyup = keyup.bind(this);
     return self;
-}
+};

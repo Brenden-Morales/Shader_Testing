@@ -14,4 +14,4 @@ window.onresize = function(){
     var canvas = document.getElementById("mainCanvas");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-}
+};
