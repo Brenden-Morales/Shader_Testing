@@ -12,5 +12,5 @@
     "devel": true,
     "camelcase": true,
     "gcl": true,
-    "predef": [ "BJM" ]
+    "predef": [ "BJM", "THREE" ]
 }
